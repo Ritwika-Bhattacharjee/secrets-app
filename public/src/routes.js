@@ -37,10 +37,6 @@
 			url: '/userpage/newpost',
 			templateUrl: 'src/templates/userpage-newpost.html'
 		})
-		.state('userpage.myposts', {
-			url: '/userpage/myposts',
-			templateUrl: 'src/templates/userpage-myposts.html'
-		})
 		.state('userpage.posted', {
 			url: '/userpage/posted',
 			templateUrl: 'src/templates/userpage-posted.html'

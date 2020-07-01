@@ -36,9 +36,14 @@
 
 <div style="margin-left: 30%;" ng-controller="homePageController as homeCtrl">
 
+<div ng-if="homeCtrl.myPostError" id="error-msg">
+	<p>You have not shared a Secret yet!</p>
+	<div><a href="/#/userpage/newpost">Share A New Secret</a></div>
+</div>
+
 	<% imageposts.forEach(function(post, index) { %> 
 
-	<div id="post-template" ng-if="homeCtrl.showImagePost[<%=index%>]">
+	<div id="post-template" ng-if="homeCtrl.showMyImagePost[<%=index%>]">
 		<div id="name" ng-if="!homeCtrl.allimageposts[<%=index%>].postusername">Anonymous</div>
 		<div id="name" ng-if="homeCtrl.allimageposts[<%=index%>].postusername"><%=post.postusername%></div>
 <!-- 		<div id="post-pic"><img src="images/exercise3.jpg" width="80%" height="300px;"></div>
@@ -91,7 +96,7 @@
 
 <% writeposts.forEach(function(post, index) { %> 
 
-	<div id="post-template" ng-if="writeCtrl.showwritePost[<%=index%>]">
+	<div id="post-template" ng-if="writeCtrl.showmywritePost[<%=index%>]">
 		<div id="name" ng-if="!writeCtrl.allwriteposts[<%=index%>].postusername">Anonymous</div>
 		<div id="name" ng-if="writeCtrl.allwriteposts[<%=index%>].postusername"><%=post.postusername%></div>
 <!-- 		<div id="post-pic"><img src="writes/exercise3.jpg" width="80%" height="300px;"></div>

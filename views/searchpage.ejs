@@ -7,10 +7,10 @@
 <div class="heading"></div>
 <div class="sidemenu">
 	<div class="options">
-		<div><a href="/getHomePage" style="text-decoration: none; color: white;">Home</a></div>
-		<div><a href="/#/userpage/myposts" style="text-decoration: none; color: white;">My Posts</a></div>
-		<div><a href="/#/userpage/newpost" style="text-decoration: none; color: white;">Share A New Secret</a></div>
-		<div ui-sref="userpage.home">Logout</div>
+		<div><a href="/getHomePage" id="option">Home</a></div>
+		<div><a href="/getMyPostsPage" id="option">My Posts</a></div>
+		<div><a href="/#/userpage/newpost" id="option">Share A New Secret</a></div>
+		<div><a href="/logout" id="option">Logout</a></div>
 	</div>
 </div>
 
@@ -35,6 +35,11 @@
 </div>
 
 <div style="margin-left: 30%;" ng-controller="searchPageImageController as spimageCtrl">
+
+<div ng-if="spimageCtrl.searchPostError" id="error-msg">
+<p>No Results Found!</p>
+<div><a href="/#/userpage/newpost">Create a New Hashtag</a></div>
+</div>
 
 	<% imageposts.forEach(function(post, index) { %> 
 

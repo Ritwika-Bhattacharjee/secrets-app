@@ -201,6 +201,28 @@ app.get('/getHomePage', function(req, res){
 	
 });
 
+app.get('/getMyPostsPage', function(req, res){
+	var imageposts = [];
+	var writeposts = [];
+	Post.find(function(err, postsdata){
+		if(!err){
+			for(var i=0; i<postsdata.length; i++){
+				if(postsdata[i].write){
+					writeposts.push(postsdata[i]);
+				}else{
+					imageposts.push(postsdata[i]);
+				}
+			}
+			console.log("User logged in is : ", loggedinUsername);
+			res.render("mypostspage", {writeposts: writeposts, imageposts: imageposts});
+		}else{
+			console.log(err);
+		}
+	});
+	
+});
+
+
 app.post('/getSearchPage', function(req, res){
 	searchimageposts = [];
 	searchwriteposts = [];
@@ -225,6 +247,34 @@ app.post('/getSearchPage', function(req, res){
 			//res.redirect("/searchTagPage");
 		}else{
 			console.log(err);
+		}
+	});
+});
+
+app.get('/getSearchPostCount', function(req, res){
+	var count=0;
+	Post.find(function(err, posts){
+		if(!err){
+			for(var i=0; i<posts.length; i++){
+				if(posts[i].tags.includes(searchtag)){
+					count = count+1;
+				}
+			}
+			res.json(count);
+		}
+	});
+});
+
+app.get('/getMyPostCount', function(req, res){
+	var count=0;
+	Post.find(function(err, posts){
+		if(!err){
+			for(var i=0; i<posts.length; i++){
+				if(posts[i].postusername==loggedinUsername){
+					count = count+1;
+				}
+			}
+			res.json(count);
 		}
 	});
 });
@@ -620,6 +670,12 @@ app.get("/getAllPosts", function(req, res){
 			console.log(err);
 		}
 	});
+});
+
+app.get("/logout", function(req, res){
+	loggedinUsername = "";
+	console.log("Logged out!!");
+	res.redirect("/#/");
 });
 
 

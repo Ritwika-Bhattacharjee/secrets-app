@@ -1,3 +1,4 @@
+
 (function(){
 	'use strict';
 
@@ -77,6 +78,15 @@
 		homeCtrl.imageDislikesCount = [];
 		homeCtrl.imageComments = [];
 		homeCtrl.showImagePost = [];
+		homeCtrl.showMyImagePost = [];
+		homeCtrl.myPostError = false;
+
+		findPostsService.getMyPostCount().then(function(response){
+			console.log(response);
+			if(response==0){
+				homeCtrl.myPostError = true;
+			}
+		});
 
 		findPostsService.getAllImagePosts().then(function(response){
 			homeCtrl.allimageposts = response;
@@ -87,6 +97,7 @@
 				homeCtrl.imagedislikes[i] = false;
 				homeCtrl.showcomments[i] = false;
 				homeCtrl.showImagePost[i] = true;
+				homeCtrl.showMyImagePost[i] = false;
 				homeCtrl.imageLikesCount[i]= homeCtrl.allimageposts[i].likes;
 				homeCtrl.imageDislikesCount[i]= homeCtrl.allimageposts[i].dislikes;
 				homeCtrl.imageComments[i] = homeCtrl.allimageposts[i].comments;
@@ -95,9 +106,20 @@
 			console.log(homeCtrl.imagelikes);
 			console.log(homeCtrl.imagedislikes);
 			homeCtrl.decideLikesDislikes();
+			homeCtrl.decideMyImagePosts();
 
 		});
 
+		homeCtrl.decideMyImagePosts = function(){
+			findPostsService.getThisUser().then(function(response){
+				var user = response.username;
+				for(var i=0; i<homeCtrl.allimageposts.length; i++){
+					if(homeCtrl.allimageposts[i].postusername == user){
+						homeCtrl.showMyImagePost[i]=true;
+					}
+				}
+			});
+		}
 
 		homeCtrl.decideLikesDislikes = function(){
 			findPostsService.getThisUser().then(function(response){
@@ -183,6 +205,7 @@
 		writeCtrl.writeDislikesCount = [];
 		writeCtrl.writeComments = [];
 		writeCtrl.showwritePost = [];
+		writeCtrl.showmywritePost = [];
 		
 		findPostsService.getAllWritePosts().then(function(response){
 			writeCtrl.allwriteposts = response;
@@ -201,8 +224,20 @@
 			console.log(writeCtrl.writelikes);
 			console.log(writeCtrl.writedislikes);
 			writeCtrl.decideLikesDislikes();
+			writeCtrl.decideMyWritePosts();
 
 		});
+
+		writeCtrl.decideMyWritePosts = function(){
+			findPostsService.getThisUser().then(function(response){
+				var user = response.username;
+				for(var i=0; i<writeCtrl.allwriteposts.length; i++){
+					if(writeCtrl.allwriteposts[i].postusername == user){
+						writeCtrl.showmywritePost[i]=true;
+					}
+				}
+			});
+		}
 
 
 		writeCtrl.decideLikesDislikes = function(){
@@ -335,6 +370,18 @@
 			});
 			return data;
 		}
+
+		service.getSearchPostCount = function(){
+			return $http.get('/getSearchPostCount').then(function(response){
+				return response.data;
+			});
+		}
+
+		service.getMyPostCount = function(){
+			return $http.get("/getMyPostCount").then(function(response){
+				return response.data;
+			});
+		}
 	}
 
 	signUpService.$inject = ['$http'];
@@ -408,6 +455,14 @@
 		spimageCtrl.imageDislikesCount = [];
 		spimageCtrl.imageComments = [];
 		spimageCtrl.showImagePost = [];
+		spimageCtrl.searchPostError = false;
+
+		findPostsService.getSearchPostCount().then(function(response){
+			console.log(response);
+			if(response==0){
+				spimageCtrl.searchPostError = true;
+			}
+		});
 
 		findPostsService.getSearchedImagePosts().then(function(response){
 			spimageCtrl.allimageposts = response;

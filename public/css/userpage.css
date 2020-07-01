@@ -16,12 +16,18 @@ body{
 }
 
 .options div{
-	color: white;
 	font-weight: bold;
 	font-family: 'Bubblegum Sans', cursive;
 	font-size: 3em;
 	cursor: pointer;
 
+}
+#option{
+	text-decoration: none; 
+	color: white;
+}
+#option:hover{
+	color: #CFC41F;
 }
 #header{
 	margin-left: 30%; 
@@ -190,4 +196,18 @@ body{
 }
 #match:hover{
 	background-color: lightgray;
+}
+#error-msg{
+	text-align: center;
+	margin-top: 100px;
+}
+#error-msg p {
+	font-weight: bold;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 2.8em;
+}
+#error-msg a{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 1.2em;
 }
