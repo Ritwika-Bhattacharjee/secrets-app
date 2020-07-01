@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="css/userpage.css">
+<div class="heading"></div>
+<div class="sidemenu">
+	<div class="options">
+		<div><a href="/getHomePage" style="text-decoration: none; color: white;">Home</a></div>
+		<div ui-sref="userpage.myposts">My Posts</div>
+		<div ui-sref="userpage.newpost">Share A New Secret</div>
+		<div ui-sref="userpage.home">Logout</div>
+	</div>
+</div>
+
+<div id="header" ng-controller="searchController as searchCtrl">
+	<p>SECRETS</p>
+	<div id="search-div">
+	<form action="/getSearchPage" method="POST">
+		<input type="text" placeholder="Search Posts by Tags..." name="query" ng-model="searchCtrl.query"  autocomplete="off">
+		<button type="submit" name="subbut3"><img src="images/search.png"></button>
+	</form>
+	</div>
+	<div id="matches">
+		<div ng-repeat="item in searchCtrl.alltags">
+		<form action="/getSearchPage" method="POST" ng-if="item.includes(searchCtrl.query) && searchCtrl.query" style="margin: 0px;">
+			<input type="text" name="query" value="{{item}}" style="display: none;">
+			<button type="submit" id="match"><div>{{item}}</div></button>
+		</form>
+		</div>
+	</div>
+</div>
+
+<ui-view></ui-view>

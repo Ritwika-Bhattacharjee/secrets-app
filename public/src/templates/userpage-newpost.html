@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="css/userpage-newpost.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<div style="margin-left: 30%;" ng-controller="uploadController as uploadCtrl">
+	<p id="heading">Go Ahead, Tell Us a Secret!</p>
+	<div id="option-bar">
+		<button id="op1" ng-click="uploadCtrl.activateOp1();">Use Secrets Template</button>
+		<button id="op2" ng-click="uploadCtrl.activateOp2();">Upload a Picture</button>
+	</div>
+	<div id="upload-div">
+	<form  action="/postUpload" method="POST" enctype="multipart/form-data">
+
+	<div ng-if="uploadCtrl.op1">
+		<p id="inst">Pen a Secret <span id="preview" ng-click="uploadCtrl.loadPreview();">Preview</span></p>
+		<textarea class="autoresizing" ng-model="uploadCtrl.secretinfo" name="secretText"></textarea>
+	</div>
+
+	<div id="secret-preview" ng-if="uploadCtrl.preview">{{uploadCtrl.secretinfo}}</div>	
+
+	<div ng-if="uploadCtrl.op2">
+		<p id="inst">Select a Picture</p>
+		<input type='file' onchange="readURL(this);" name="image" />
+		<img id="blah" src="http://placehold.it/180" alt="your image" width="0px" height="0px" />
+	</div>
+
+	<p id="inst">Add a Caption</p>
+	<textarea class="autoresizing" name="caption"></textarea>
+	<p id="inst">Add Tags</p>
+	<textarea class="autoresizing" id="tag-input" name="tags"></textarea><br>
+	<button id="upload-button" name="subbut2">Upload</button>
+	</form>
+	</div>
+</div>
+
+<script>
+
+$(document).ready(function(){
+	$('.autoresizing').on('input', function () { 
+            this.style.height = 'auto'; 
+              
+            this.style.height =  
+                    (this.scrollHeight) + 'px'; 
+        }); 
+
+});
+
+	
+
+	     function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                    $('#blah')
+                        .attr('width', "85%");
+                    $('#blah')
+                        .attr('height', "300px");
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>

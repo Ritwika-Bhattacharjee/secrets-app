@@ -1,0 +1,152 @@
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/userpage.css">
+
+<div class="heading"></div>
+<div class="sidemenu">
+	<div class="options">
+		<div><a href="/getHomePage" style="text-decoration: none; color: white;">Home</a></div>
+		<div><a href="/#/userpage/myposts" style="text-decoration: none; color: white;">My Posts</a></div>
+		<div><a href="/#/userpage/newpost" style="text-decoration: none; color: white;">Share A New Secret</a></div>
+		<div ui-sref="userpage.home">Logout</div>
+	</div>
+</div>
+
+<div ng-app="secrets">
+
+<div id="header" ng-controller="searchController as searchCtrl">
+	<p>SECRETS</p>
+	<div id="search-div">
+	<form action="/getSearchPage" method="POST">
+		<input type="text" placeholder="Search Posts by Tags..." name="query" ng-model="searchCtrl.query"  autocomplete="off">
+		<button type="submit" name="subbut3"><img src="images/search.png"></button>
+	</form>
+	</div>
+	<div id="matches">
+		<div ng-repeat="item in searchCtrl.alltags">
+		<form action="/getSearchPage" method="POST" ng-if="item.includes(searchCtrl.query) && searchCtrl.query" style="margin: 0px;">
+			<input type="text" name="query" value="{{item}}" style="display: none;">
+			<button type="submit" id="match"><div>{{item}}</div></button>
+		</form>
+		</div>
+	</div>
+</div>
+
+<div style="margin-left: 30%;" ng-controller="searchPageImageController as spimageCtrl">
+
+	<% imageposts.forEach(function(post, index) { %> 
+
+	<div id="post-template" ng-if="spimageCtrl.showImagePost[<%=index%>]">
+		<div id="name" ng-if="!spimageCtrl.allimageposts[<%=index%>].postusername">Anonymous</div>
+		<div id="name" ng-if="spimageCtrl.allimageposts[<%=index%>].postusername"><%=post.postusername%></div>
+<!-- 		<div id="post-pic"><img src="images/exercise3.jpg" width="80%" height="300px;"></div>
+ -->       
+		<div id="post-pic">
+		<img src="data:image/<%=post.image.contentType%>;base64,<%=post.image.data.toString('base64')%>" width="80%" height="300px"> 
+		</div>
+
+		<div id="info">
+			<span id="icons" ng-if="!spimageCtrl.imagelikes[<%=index%>]"><img src="images/like.png" ng-click="spimageCtrl.imagelike(<%=index%>)"></span>
+
+			<span id="icons" ng-if="spimageCtrl.imagelikes[<%=index%>]"><img src="images/like-fill.png" ng-click="spimageCtrl.notimagelike(<%=index%>)"></span>
+
+			<span id="icons" ng-if="!spimageCtrl.imagedislikes[<%=index%>]"><img src="images/dislike.png" ng-click="spimageCtrl.imagedislike(<%=index%>)"></span>
+
+			<span id="icons" ng-if="spimageCtrl.imagedislikes[<%=index%>]"><img src="images/dislike-fill.png" ng-click="spimageCtrl.notimagedislike(<%=index%>)"></span>
+
+			<span id="icons"><img src="images/comment.png" ng-click="spimageCtrl.displaycomments(<%=index%>)"></span>
+		</div>
+
+		<div id="likes-and-dislikes">
+			<span id="l">{{spimageCtrl.imageLikesCount[<%=index%>]}} Likes</span>
+			<span id="dl">{{spimageCtrl.imageDislikesCount[<%=index%>]}} Dislikes</span><br>
+		</div> 
+
+		<div id="comments" ng-if="spimageCtrl.showcomments[<%=index%>]">
+			<p id="chead">Comments<span><button ng-click="spimageCtrl.hidecomments(<%=index%>)">Hide</button></span></p>
+			<form id="cform">
+				<input type="text" name="myComment" placeholder="Add a comment..." id="cinput" ng-model="spimageCtrl.mycomment"><button id="cbutton" ng-click="spimageCtrl.updateComments(<%=index%>)">Post</button>
+			</form>
+			<div ng-repeat="comment in spimageCtrl.imageComments[<%=index%>]"> 
+			<div id="comment">
+				<p id="cname">{{comment.user}}</p>
+				<p id="cdesc">{{comment.info}}</p>
+			</div>
+			</div>
+
+		</div>
+		<div id="caption"><%=post.caption%></div>
+		<div id="tags">
+			<span id="tag"><%=post.tags%></span>
+		</div>
+
+	</div>
+	<% }) %> 
+	</div>
+
+<div style="margin-left: 30%;" ng-controller="searchPageWriteController as spwriteCtrl">
+
+
+<% writeposts.forEach(function(post, index) { %> 
+
+	<div id="post-template" ng-if="spwriteCtrl.showwritePost[<%=index%>]">
+		<div id="name" ng-if="!spwriteCtrl.allwriteposts[<%=index%>].postusername">Anonymous</div>
+		<div id="name" ng-if="spwriteCtrl.allwriteposts[<%=index%>].postusername"><%=post.postusername%></div>
+<!-- 		<div id="post-pic"><img src="writes/exercise3.jpg" width="80%" height="300px;"></div>
+ -->       
+		<div id="post-pic">
+			<div id="write"><%= post.write %></div>
+		</div>
+
+		<div id="info">
+			<span id="icons" ng-if="!spwriteCtrl.writelikes[<%=index%>]"><img src="images/like.png" ng-click="spwriteCtrl.writelike(<%=index%>)"></span>
+
+			<span id="icons" ng-if="spwriteCtrl.writelikes[<%=index%>]"><img src="images/like-fill.png" ng-click="spwriteCtrl.notwritelike(<%=index%>)"></span>
+
+			<span id="icons" ng-if="!spwriteCtrl.writedislikes[<%=index%>]"><img src="images/dislike.png" ng-click="spwriteCtrl.writedislike(<%=index%>)"></span>
+
+			<span id="icons" ng-if="spwriteCtrl.writedislikes[<%=index%>]"><img src="images/dislike-fill.png" ng-click="spwriteCtrl.notwritedislike(<%=index%>)"></span>
+
+			<span id="icons"><img src="images/comment.png" ng-click="spwriteCtrl.displaycomments(<%=index%>)"></span>
+		</div>
+
+		<div id="likes-and-dislikes">
+			<span id="l">{{spwriteCtrl.writeLikesCount[<%=index%>]}} Likes</span>
+			<span id="dl">{{spwriteCtrl.writeDislikesCount[<%=index%>]}} Dislikes</span><br>
+		</div> 
+
+		<div id="comments" ng-if="spwriteCtrl.showcomments[<%=index%>]">
+			<p id="chead">Comments<span><button ng-click="spwriteCtrl.hidecomments(<%=index%>)">Hide</button></span></p>
+			<form id="cform">
+				<input type="text" name="myComment" placeholder="Add a comment..." id="cinput" ng-model="spwriteCtrl.mycomment"><button id="cbutton" ng-click="spwriteCtrl.updateComments(<%=index%>)">Post</button>
+			</form>
+			<div ng-repeat="comment in spwriteCtrl.writeComments[<%=index%>]"> 
+			<div id="comment">
+				<p id="cname">{{comment.user}}</p>
+				<p id="cdesc">{{comment.info}}</p>
+			</div>
+			</div>
+			
+		</div>
+		<div id="caption"><%=post.caption%></div>
+		<div id="tags">
+			<span id="tag"><%=post.tags%></span>
+		</div>
+
+	</div>
+	<% }) %> 
+
+</div>
+
+
+
+<script src="lib/jquery-2.1.4.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+    <script src="src/routes.js"></script>
+    <script src="src/controllers.js"></script>
+
+</div>

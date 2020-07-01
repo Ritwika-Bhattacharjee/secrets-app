@@ -1,0 +1,19 @@
+<div style="margin-left: 30%;">
+	<h1>My posts page</h1>
+	<input type='file' onchange="readURL(this);" />
+	<img id="blah" src="http://placehold.it/180" alt="your image" width="180px" height="300px" />
+</div>
+<script>
+	     function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>

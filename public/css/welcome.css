@@ -1,0 +1,111 @@
+body{
+	background-color: #6C7074;
+}
+#p1{
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 3.5em;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	margin-top: 10%;
+}
+#p2{
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 2em;
+	text-align: center;
+	font-weight: bold;
+	color: black;
+}
+#p3{
+	font-family: 'Lilita One', cursive;
+	font-size: 4.5em;
+	text-align: center;
+	color: white;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+#p4{
+	font-family: 'Bubblegum Sans', cursive;
+	text-align: center;
+	font-weight: bold;
+	margin-top: 0px;
+	padding-top: 0px;
+	font-size: 1.5em;
+	color: black;
+}
+#leftdiv{
+	text-align: right;
+	border-right: 1px solid black; 
+}
+#rightdiv{
+	text-align: left;
+}
+
+#leftdiv, #rightdiv{
+	font-weight: bold;
+	font-size: 1.2em;
+	font-family: 'Bubblegum Sans', cursive;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+	color: black; 
+}
+#but1, #but2{
+	padding: 10px;
+	width: 20%;
+	font-weight: bold;
+	font-size: 1.4em;
+	background-color: black;
+	color: white;
+	font-family: 'Bubblegum Sans', cursive;
+
+}
+#but1:hover, #but2:hover{
+	background-color: white;
+	color: black;
+}
+#regdiv{
+	text-align: center;
+	margin-top: 3%;
+}
+#but3{
+	padding: 10px;
+	width: 20%;
+	margin-top: 30px;
+	border-radius: 10px;
+	background-color: black;
+	color: white;
+	font-weight: bold;
+	font-size: 1.5em;
+	font-family: 'Bubblegum Sans', cursive;
+
+}
+#regdiv input{
+	width: 60%;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	margin-bottom: 3px;
+	margin-top: 3px;
+}
+#inputdiv{
+	border-right: 1px solid black;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+#p5{
+	font-weight: bold;
+	font-size: 1.2em;
+	font-family: 'Bubblegum Sans', cursive;
+	color: black; 
+	margin-top: 10px;
+}
+#buttondiv{
+	padding-top: 35%;
+}
+.error{
+	color: maroon;
+	font-weight: bold;
+	margin-top: 5px;
+}

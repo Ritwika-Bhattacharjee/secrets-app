@@ -1,0 +1,26 @@
+<div ng-controller="signUpController as signupCtrl">
+ <div class="row">
+	<div class="col-md-8" id="regdiv">
+		<p id="p3">Secrets</p>
+		<p id="p4">Sign Up Now!</p>
+		<form name="regForm" action="/signup" method="POST" novalidate>
+			<div id="inputdiv">
+			<input type="text" name="username" ng-model="signupCtrl.username" placeholder="Choose an Anonymous Username" ng-change="signupCtrl.checkExisting();" required minlength="6"><br>
+			<p class="error" ng-if="signupCtrl.error">Username already exists!</p>
+ 			<p class="error" ng-if="(regForm.username.$error.minlength || regForm.username.$error.required) && regForm.username.$touched">Username must me atleast 6 character long!</p>
+			<input type="password" name="password" ng-model="signupCtrl.password" placeholder="Set a password" required minlength="8"><br>
+			<p class="error" ng-if="(regForm.password.$error.minlength || regForm.password.$error.required) && regForm.password.$touched">Password must be atleast 8 characters long!</p>
+			</div>
+			<button id="but3" type="submit">Sign Up</button>
+		</form>
+	</div>
+	<div class="col-md-4">
+		<div id="buttondiv">
+		<p id="p5">New to Secrets?</p>
+		<button ui-sref="signup" id="but1">Sign Up</button>
+		<p id="p5">Already Have an Account?</p>
+		<button ui-sref="login" id="but2">Login</button>
+		</div>
+	</div>
+</div>
+</div>

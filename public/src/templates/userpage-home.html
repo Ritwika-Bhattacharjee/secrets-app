@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="css/userpage.css">
+<div style="margin-left: 30%;" ng-controller="homePageController as homeCtrl">
+	<div id="post-template" ng-repeat="post in homeCtrl.allposts">
+		<div id="name">Ritwika</div>
+<!-- 		<div id="post-pic"><img src="images/exercise3.jpg" width="80%" height="300px;"></div>
+ -->
+		<div id="post-pic" ng-if="!post.write.length">
+		<img ng-src="data:image/{{post.image.contentType}};base64,{{post.image.data.data.toString('base64')}}" width="80%" height="300px;"> 
+		</div>
+
+		<div id="info">
+			<span id="icons"><img src="images/like.png"></span>
+			<span id="icons"><img src="images/like-fill.png"></span>
+			<span id="icons"><img src="images/dislike.png"></span>
+			<span id="icons"><img src="images/dislike-fill.png"></span>
+			<span id="icons"><img src="images/comment.png"></span>
+		</div>
+		<div id="comments">
+			<p id="chead">Comments<span><button>Hide</button></span></p>
+			<form id="cform">
+				<input type="text" name="myComment" placeholder="Add a comment..." id="cinput"><button id="cbutton">Post</button>
+			</form>
+			<div id="comment">
+				<p id="cname">Madhurima</p>
+				<p id="cdesc">I love this post, what an  amazing beauty!</p>
+			</div>
+			<div id="comment">
+				<p id="cname">Tushar</p>
+				<p id="cdesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+			</div>
+			<div id="comment">
+				<p id="cname">Smriti</p>
+				<p id="cdesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+			</div>
+			<div id="comment">
+				<p id="cname">Aradhna</p>
+				<p id="cdesc">I love this post, what an  amazing beauty!</p>
+			</div>
+			<div id="comment">
+				<p id="cname">Jacob</p>
+				<p id="cdesc">I love this post, what an  amazing beauty! lafdigj ihjfesu hgiit qqj wirjvjs ugjdg uh</p>
+			</div>
+		</div>
+		<div id="caption">{{post.caption}}</div>
+		<div id="tags">
+			<span id="tag">{{post.tags}}</span>
+			<!-- <span id="tag">#food</span>
+			<span id="tag">#lifestyle</span>
+			<span id="tag">#fitness</span>
+			<span id="tag">#exercise</span>
+			<span id="tag">#photography</span>
+			<span id="tag">#travel</span>
+			<span id="tag">#nature</span>
+			<span id="tag">#mountains</span>
+			<span id="tag">#friends</span> -->
+
+		</div>
+	</div>
+
+</div>

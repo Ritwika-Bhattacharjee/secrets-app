@@ -1,0 +1,90 @@
+#heading{
+	font-family: 'Bubblegum Sans', cursive;
+	font-weight: bold;
+	margin-top: 30px;
+	text-align: center;
+	font-size: 3.5em;
+	margin-bottom: 0px;
+}
+#upload-div{
+	width: 70%;
+	margin: auto;
+	padding: 50px;
+	margin-top: 0px;
+}
+#option-bar{
+	text-align: center;
+	margin: auto;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+#option-bar button{
+	width: 35%;
+	padding: 10px;
+	font-family: 'Bubblegum Sans', cursive;
+	font-weight: bold;
+	font-size: 1.4em;
+	border: none;
+
+}
+#inst{
+	font-family: 'Bubblegum Sans', cursive;
+	font-weight: bold;
+	font-size: 1.4em;
+}
+#blah{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.autoresizing{
+	width: 90%;
+	border-radius: 5px;
+	display: block; 
+    overflow: hidden; 
+    resize: none; 
+    padding: 5px;
+}
+#tag-input{
+	color: purple;
+	font-weight: bold;
+}
+#upload-button{
+	background-color: #089B1F;
+	color: white;
+	border: none;
+	margin: auto;
+	font-family: 'Bubblegum Sans', cursive;
+	padding: 7px;
+	font-size: 1.2em;
+	border-radius: 7px;
+	width: 40%;
+}
+#preview{
+	color: #3D076F;
+	font-size: 1em;
+	margin-left: 60%;
+	cursor: pointer;
+}
+
+#secret-preview{
+	background-color: #525F0A;
+	color: white;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 1.4em;
+	width: 90%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 60px;
+
+}
+
+#posted-message{
+	text-align: center;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 3.5em;
+	font-weight: bold;
+	color: #357F0A;
+	width: 70%;
+	margin: auto;
+	margin-top: 20%;
+}

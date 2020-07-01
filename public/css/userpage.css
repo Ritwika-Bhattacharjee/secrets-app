@@ -1,0 +1,193 @@
+body{
+	background-color: white;
+}
+
+.sidemenu{
+	width: 30%;
+	background-color: #8D9196;
+	text-align: right;
+	padding-right: 40px;
+	padding-top: 160px;
+	padding-bottom: 50px;
+	height: 630px;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
+
+.options div{
+	color: white;
+	font-weight: bold;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 3em;
+	cursor: pointer;
+
+}
+#header{
+	margin-left: 30%; 
+	top: 0; 
+	margin-top: -630px; 
+	position: -webkit-sticky;
+	position: sticky;
+}
+#header p{
+	font-size: 3.4em; 
+	background-color: black; 
+	font-family: 'Bubblegum Sans', cursive;
+	font-weight: bold;
+	text-align: left;
+	color: white;
+	margin-bottom: 0px;
+	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#post-template{
+	width: 70%;
+	margin-left: 22%;
+	padding-bottom: 30px;
+}
+#post-pic{
+	margin-bottom: 10px;
+}
+#name{
+	font-family: 'Bubblegum Sans', cursive;
+	font-weight: bold;
+	padding: 10px;
+	font-size: 1.7em;
+}
+#caption{
+	width: 80%;
+	margin-top: 10px;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 1.1em;
+}
+#icons{
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+#comments{
+	width: 80%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#cform{
+	border: 1px solid #505356;
+	padding: 5px;
+	border-radius: 10px;
+	margin-bottom: 15px;
+}
+#cinput{
+	width: 90%;
+	border: none;
+}
+#cinput:focus{
+	outline:none;
+}
+#cbutton{
+	background-color: transparent;
+	border: none;
+	color: #2B66B0;
+	font-weight: bold;
+}
+#chead{
+	font-weight: bold;
+	font-size: 1.1em;
+}
+#chead span button{
+	background-color: transparent;
+	border: none;
+	color: purple;
+	cursor: pointer;
+	margin-left: 70%;
+}
+#cname{
+	font-weight: bold;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 1.2em;
+	margin-bottom: 0px;
+}
+#cdesc{
+	font-size: 0.9em;
+}
+#tags{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	width: 80%;
+}
+#tag{
+	color: purple;
+	font-weight: bold;
+	padding-right: 3px;
+}
+#write{
+	width: 80%;
+	padding: 60px;
+	background-color: #525F0A;
+	color: white;
+	font-family: 'Bubblegum Sans', cursive;
+	font-size: 1.4em;
+	text-align: center;
+}
+#likes-and-dislikes{
+	text-align: center;
+	font-weight: bold;
+	width: 80%;
+}
+#l{
+	color: maroon;
+}
+#search-div{
+	width: 60%;
+	margin-left: 22%;
+	font-size: 1.3em;
+	border-radius: 15px;
+	border: 2px solid black;
+	margin-top: 15px;
+	background-color: white;
+}
+#search-div input{
+	width: 85%;
+	padding: 15px;
+	border: none;
+	margin-left: 2%;
+}
+#search-div input:focus{
+	outline: none;
+}
+#search-div button{
+	background-color: white;
+	border: none;
+}
+#search-div form{
+	margin: 0px;
+}
+#matches{
+	width: 60%;
+	margin-left: 22%;
+	font-size: 1.3em;
+	background-color: white;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+}
+#match{
+	padding-left: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+	background-color: white;
+	border: none;
+	margin: 0px;
+	color: darkblue;
+	font-weight: bold;
+}
+#match:hover{
+	background-color: lightgray;
+}
